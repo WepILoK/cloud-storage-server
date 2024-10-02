@@ -7,6 +7,11 @@ import {
 } from 'typeorm';
 import { UserEntity } from '../../users/entities/user.entity';
 
+export enum FileType {
+  PHOTOS = 'photos',
+  TRASH = 'trash',
+}
+
 @Entity('files')
 export class FileEntity {
   @PrimaryGeneratedColumn()
@@ -22,7 +27,7 @@ export class FileEntity {
   size: number;
 
   @Column()
-  mimeType: string;
+  mimetype: string;
 
   @ManyToOne(() => UserEntity, (user) => user.files)
   user: UserEntity;
